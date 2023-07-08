@@ -1,0 +1,138 @@
+
+<div class="box">
+
+    <app-header></app-header>
+
+    <div class="box__itens">
+
+        <div *ngFor="let filme of filmes; index as i" class="box__itens__container">
+            <div class="box__itens__container__photo">
+                <img class="box__itens__container__photo__img" src="{{ filme.urlImage }}" alt="">
+            </div>
+    
+            <div class="box__itens__container__info">
+    
+                <div class="box__itens__container__info__top">
+                    <div class="box__itens__container__info__top__title">
+                        <h1 *ngIf="filme.enableEdit == false" class="box__itens__container__info__top__title__text">{{ filme.title }}</h1>
+                        <input *ngIf="filme.enableEdit == true" class="box__itens__container__info__top__title__text__input" 
+                        type="text" value="{{ filme.title }}" [(ngModel)]="filme.title">
+                    </div>
+                
+                    <div class="box__itens__container__info__top__sinopse__text">
+                        <p *ngIf="filme.enableEdit == false">
+                            {{ filme.sinopse }}
+                        </p>
+                        <textarea *ngIf="filme.enableEdit == true" class="box__itens__container__info__top__title__sinopse__input" 
+                         value="{{ filme.sinopse }}" [(ngModel)]="filme.sinopse"></textarea>
+                    </div>
+                </div>
+    
+                <div class="box__itens__container__info__bottom">
+
+                    <div class="box__itens__container__info__bottom__duration">
+                        <h3 class="box__itens__container__info__bottom__text">Duração: </h3>
+
+                        <p *ngIf="filme.enableEdit == false" class="box__itens__container__info__bottom__value">{{ filme.duration }}</p>
+
+                        <input *ngIf="filme.enableEdit == true" class="box__itens__container__info__bottom__duration__input" 
+                        type="text" value="{{ filme.duration }}" [(ngModel)]="filme.duration">
+                    </div>
+            
+                    <div class="box__itens__container__info__bottom__genre">
+                        <h3 class="box__itens__container__info__bottom__text">Gênero: </h3>
+                        <p *ngIf="filme.enableEdit == false" class="box__itens__container__info__bottom__value">{{ filme.genre }}</p>
+                        <input *ngIf="filme.enableEdit == true" class="box__itens__container__info__bottom__genre__input"
+                        type="text" value="{{ filme.genre }}" [(ngModel)]="filme.genre">
+                    </div>
+            
+                    <div class="box__itens__container__info__bottom__classification">
+                        <img class="box__itens__container__info__bottom__classification__img" src="" alt="">
+                    </div>
+            
+                    <div class="box__itens__container__info__bottom__saga">
+                        <h3 class="box__itens__container__info__bottom__text">Saga: </h3>
+                        <p *ngIf="filme.saga == true && filme.enableEdit == false" class="box__itens__container__info__bottom__value">Sim</p>
+                        <p *ngIf="filme.saga == false && filme.enableEdit == false" class="box__itens__container__info__bottom__value">Não</p>
+                        <select *ngIf="filme.enableEdit == true" class="box__itens__container__info__bottom__saga__input" type="text" [(ngModel)]="filme.saga">
+                            <option value="1">Sim</option>
+                            <option value="0">Não</option>
+                        </select>
+                    </div>
+            
+                    <div class="box__itens__container__info__bottom__date">
+                        <h3 class="box__itens__container__info__bottom__text">Data: </h3>
+                        <p *ngIf="filme.enableEdit == false" class="box__itens__container__info__bottom__value">{{ filme.date }}</p>
+                        <input *ngIf="filme.enableEdit == true" class="box__itens__container__info__bottom__date__input"
+                        type="text" value="{{ filme.date }}" [(ngModel)]="filme.date">
+                    </div>
+                </div>
+            </div>
+                
+    
+            <div class="box__itens__container__buttons">
+    
+                <div class="box__itens__container__buttons__avaliation">
+                    <img *ngIf="filme.avaliationCommunity < 1" class="box__itens__container__buttons__avaliation__pri" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationCommunity >= 1" class="box__itens__container__buttons__avaliation__pri" src="../../../assets/star (2).png" alt="">
+
+                    <img *ngIf="filme.avaliationCommunity < 2" class="box__itens__container__buttons__avaliation__seg" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationCommunity >= 2" class="box__itens__container__buttons__avaliation__seg" src="../../../assets/star (2).png" alt="">
+
+                    <img *ngIf="filme.avaliationCommunity < 3" class="box__itens__container__buttons__avaliation__ter" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationCommunity >= 3" class="box__itens__container__buttons__avaliation__ter" src="../../../assets/star (2).png" alt="">
+
+                    <img *ngIf="filme.avaliationCommunity < 4" class="box__itens__container__buttons__avaliation__qua" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationCommunity >= 4" class="box__itens__container__buttons__avaliation__qua" src="../../../assets/star (2).png" alt="">
+
+                    <img *ngIf="filme.avaliationCommunity < 5" class="box__itens__container__buttons__avaliation__qui" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationCommunity >= 5" class="box__itens__container__buttons__avaliation__qui" src="../../../assets/star (2).png" alt="">
+
+                </div>
+
+                <!-- (click)="addFavortites(filme, filme.id)" -->
+    
+                <div class="box__itens__container__buttons__actions">
+                    <img (click)="addFavortites(filme, filme.id)" 
+                    *ngIf="filme.favorites == false" class="box__itens__container__buttons__actions__favorite" 
+                    src="../../../assets/favourite.png" alt="">
+
+                    <img (click)="addFavortites(filme, filme.id)" 
+                    *ngIf="filme.favorites == true" class="box__itens__container__buttons__actions__favorite" 
+                    src="../../../assets/favourite (1).png" alt="">
+
+                    <img (click)="addWatched(filme, filme.id)"
+                    *ngIf="filme.watched == false" class="box__itens__container__buttons__actions__view" 
+                    src="../../../assets/view.png" alt="">
+                    
+                    <img (click)="addWatched(filme, filme.id)"
+                    *ngIf="filme.watched == true" class="box__itens__container__buttons__actions__view" 
+                    src="../../../assets/view (2).png" alt="">
+
+                    <img (click)="edit(filme, filme.id)" class="box__itens__container__buttons__actions__edit" src="../../../assets/edit.png" alt="">
+
+                    <img (click)="del(filme, i)"
+                    class="box__itens__container__buttons__actions__delete" src="../../../assets/trash-bin.png" alt="">
+                </div>
+            </div>
+    
+        </div>
+
+    </div>
+
+    <!-- <div class="messagebox">
+        <div class="messagebox__title">
+            <h1 class="messagebox__title__text">{{ text }}</h1>
+        </div>
+        <div class="messagebox__message">
+            <p class="messagebox__message__text"></p>
+        </div>
+    
+        <div class="messagebox__buttons">
+            <button class="messagebox__buttons__cancel">Cancelar</button>
+            <button class="messagebox__buttons__ok">Ok</button>
+        </div>
+    </div> -->
+
+</div>
+    

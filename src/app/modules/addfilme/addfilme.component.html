@@ -1,0 +1,93 @@
+<div class="box">
+
+    <app-header></app-header>
+
+    <div class="box__add">
+
+        <form [formGroup]="form" (submit)="sendFilme()" class="box__add__form">
+
+            <div class="box__add__form__title">
+                <h4 class="box__add__form__title__text">Título do filme</h4>
+                <input type="text" class="box__add__form__title__input" formControlName="title" placeholder="Ex: Harry Potter e a Pedra Filosofal">
+                <p *ngIf="(title?.dirty || title?.touched) && title?.errors?.['minlength']" class="mensage__error">Minimo 3 caracteres</p>
+                <p *ngIf="(title?.dirty || title?.touched) && title?.errors?.['required']" class="mensage__error">O título é obrigatório!</p>
+            </div>
+
+            <div class="box__add__form__sinopse">
+                <h4 class="box__add__form__sinopse__text">Sinopse do filme</h4>
+                <textarea type="text" class="box__add__form__sinopse__input" placeholder="Ex: Harry Potter é um garoto órfão que vive infeliz com seus tios, os Dursleys. Ele recebe uma carta contendo um convite para ingressar em Hogwarts, uma famosa escola especializada em formar jovens bruxos. Inicialmente, Harry é impedido de ler a carta por seu tio, mas logo recebe a visita de Hagrid, o guarda-caça de Hogwarts, que chega para levá-lo até a escola. Harry adentra um mundo mágico que jamais imaginara, vivendo diversas aventuras com seus novos amigos, Rony Weasley e Hermione Granger."
+                formControlName="sinopse"></textarea>
+                <p *ngIf="(sinopse?.dirty || sinopse?.touched) && sinopse?.errors?.['minlength']" class="mensage__error">Minimo 30 caracteres</p>
+                <p *ngIf="(sinopse?.dirty || sinopse?.touched) && sinopse?.errors?.['maxlength']" class="mensage__error">Máximo 265 caracteres</p>
+                <p *ngIf="(sinopse?.dirty || sinopse?.touched) && sinopse?.errors?.['required']" class="mensage__error">A sinopse é obrigatória!</p>      
+            </div>
+
+            <div class="box__add__form__time">
+                <div class="box__add__form__time__duration">
+                    <h4 class="box__add__form__time__duration__text">Duração do filme</h4>
+                    <input type="text" class="box__add__form__time__duration__input" placeholder="Ex: 2h 32m" formControlName="duration">
+                    <p *ngIf="(duration?.dirty || duration?.touched) && duration?.errors?.['minlength']" class="mensage__error">Minimo 2 caracteres</p>
+                    <p *ngIf="(duration?.dirty || duration?.touched) && duration?.errors?.['maxlength']" class="mensage__error">Máximo 6 caracteres</p>
+                    <p *ngIf="(duration?.dirty || duration?.touched) && duration?.errors?.['required']" class="mensage__error">A duração é obrigatória!</p> 
+                </div>
+                <div class="box__add__form__time__date">
+                    <h4 class="box__add__form__time__date__text">Data de lançamento</h4>
+                    <input type="text" class="box__add__form__time__date__input" placeholder="Ex: 5 de maio de 2001" formControlName="date">
+                    <p *ngIf="(date?.dirty || date?.touched) && date?.errors?.['minlength']" class="mensage__error">Minimo 8 caracteres</p>
+                    <p *ngIf="(date?.dirty || date?.touched) && date?.errors?.['maxlength']" class="mensage__error">Máximo 25 caracteres</p>
+                    <p *ngIf="(date?.dirty || date?.touched) && date?.errors?.['required']" class="mensage__error">A data é obrigatória!</p> 
+                </div>
+            </div>
+
+            <div class="box__add__form__genre">
+                <h4 class="box__add__form__genre__text">Gênero do filme</h4>
+                <input type="text" class="box__add__form__genre__input" placeholder="Ex: Fantasia/Aventura" formControlName="genre">
+                <p *ngIf="(genre?.dirty || genre?.touched) && genre?.errors?.['minlength']" class="mensage__error">Minimo 4 caracteres</p>
+                    <p *ngIf="(genre?.dirty || genre?.touched) && genre?.errors?.['maxlength']" class="mensage__error">Máximo 30 caracteres</p>
+                    <p *ngIf="(genre?.dirty || genre?.touched) && genre?.errors?.['required']" class="mensage__error">O gênero é obrigatório!</p> 
+            </div>
+
+            <div class="box__add__form__dropdown">
+                <div class="box__add__form__dropdown__saga">
+                    <h4 class="box__add__form__dropdown__saga__text">O filme faz parte de uma saga?</h4>
+                    <select name="" id="" class="box__add__form__dropdown__saga__select" formControlName="saga">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
+                    <p *ngIf="(saga?.dirty || saga?.touched) && saga?.errors?.['required']" 
+                    class="mensage__error">A saga é obrigatória!</p> 
+                </div>
+
+                <div class="box__add__form__dropdown__aval">
+                    <h4 class="box__add__form__dropdown__aval__text">Avaliação</h4>
+                    <select name="" id="" class="box__add__form__dropdown__aval__select" formControlName="avaliationCommunity">
+                        <option value="1">1 Estrela</option>
+                        <option value="2">2 Estrelas</option>
+                        <option value="3">3 Estrelas</option>
+                        <option value="4">4 Estrelas</option>
+                        <option value="5">5 Estrelas</option>
+                    </select>
+                    <p *ngIf="(avaliationCommunity?.dirty || avaliationCommunity?.touched) && avaliationCommunity?.errors?.['required']" 
+                    class="mensage__error">A avaliação é obrigatória!</p> 
+                </div>
+            </div>
+
+            <div class="box__add__form__img">
+                <h4 class="box__add__form__img__text">Imagem do filme(URL)</h4>
+                <input type="text" class="box__add__form__img__input" placeholder="Ex: https://assetsgn.nowonline.com.br/assets/p28630_v_v8_bi.jpg" (keyup)="adicImage()"
+                formControlName="urlImage">
+                <p *ngIf="(url?.dirty || url?.touched) && url?.errors?.['required']" class="mensage__error">A imagem é obrigatória!</p> 
+            </div>
+
+            <button type="submit" class="box__add__form__btn">Postar</button>
+        </form>
+
+        <div class="box__add__img">
+            <img class="box__add__img__photo" src="{{ urlImage }}" alt="">
+            <img class="box__add__img__not" src="https://cdn-icons-png.flaticon.com/512/813/813789.png" alt="">
+        </div>
+
+
+    </div>
+
+</div>

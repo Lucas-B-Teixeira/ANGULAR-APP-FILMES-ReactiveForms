@@ -1,0 +1,205 @@
+app-header{
+    position: fixed;
+    z-index: 5;
+}
+
+@font-face {
+    font-family: poppinsbold;
+    src: url('../../../assets/Poppins/Poppins-Bold.ttf');
+}
+
+.box{
+    width: 60vw;
+    height: 80vh;
+    background-color: rgb(197, 192, 192);
+
+    &__itens{
+        padding-top: 3vh;
+        width: 60vw;
+        height: 77vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar{
+            width: 0.2vw;
+        }
+        
+        &::-webkit-scrollbar-track{
+            background-color: rgb(10, 40, 61);
+        }
+        
+        &::-webkit-scrollbar-thumb{
+            background-color: rgb(1, 153, 255);
+            border-radius: 20px;
+            border: 5% solid rgb(10, 40, 61);
+        }
+
+        &__container{
+            display: flex;
+            // justify-content: center;
+            align-items: center;
+            border-bottom: 3px solid rgb(1, 153, 255);
+            width: 60vw;
+            height: 23vh;
+            background-color: rgb(32, 32, 33);
+            position: relative;
+            font-family: poppins;
+        
+            &__photo{
+                width: 15%;
+                height: 100%;
+        
+                &__img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        
+            &__info{
+                padding-left: 2%;
+                display: flex;
+                flex-direction: column;
+                height: 80%;
+                width: 50%;
+                justify-content: space-around;
+                padding-right: 3%;
+                border-right: 2px solid rgb(1, 153, 255);;
+                
+                &__top{
+        
+                    &__title__text{
+                        margin: 0;
+                        color: rgb(1, 153, 255);
+                    }
+        
+                    &__sinopse{
+                        font-size: 90%;
+                        margin: 0;
+                        
+                        &__text{
+                            color: white;
+                            margin: 0;
+                            word-wrap: break-word;
+                        }
+                    }            
+                }
+        
+                &__bottom{
+                    display: flex;
+                    width: 100%;
+                    height: 15%;
+                    justify-content: space-between;
+                    align-items: center;
+        
+                    &__duration, &__genre, &__saga, &__date{
+                        display: flex;
+                    }
+        
+                    &__text{
+                        font-size: 85%;
+                        font: bold;
+                        margin-right: 5px;
+                        font-family: poppinsbold;
+                        color: rgb(1, 153, 255);
+                    }
+        
+                    &__value{
+                        font-size: 85%;
+                        font-style: oblique;
+                        color: white;
+                    }
+        
+                }
+            }
+        
+            &__buttons{
+                display: flex;
+                flex-direction: column;
+                width: 30%;
+                justify-content: space-around;
+                align-items:center;
+                height: 80%;
+        
+                &__avaliation{
+                    display: flex;
+                    width: 65%;
+                    justify-content: space-between;
+        
+                    &__pri, &__seg, &__ter, &__qua, &__qui{
+                        width: 12%;
+                        transition: all ease 0.2s;
+                    }
+        
+                    &__pri:hover, &__seg:hover, &__ter:hover, &__qua:hover, &__qui:hover{
+                        cursor: default;
+                    }
+                }
+        
+                &__actions{
+        
+                    display: flex;
+                    width: 70%;
+                    justify-content: space-around;
+        
+                    &__favorite, &__view, &__edit, &__delete{
+                        width: 15%;
+                        transition: all ease 0.2s;
+                    }
+        
+                    &__favorite:hover, &__view:hover, &__edit:hover, &__delete:hover{
+                        cursor: pointer;
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.box__itens__container__info__top__title__text__input{
+    color: rgb(1, 153, 255);
+    font-family: poppins;
+    font-size: 1.7vw;
+    margin-bottom: 2%;
+}
+
+.box__itens__container__info__top__title__sinopse__input{
+    width: 100%;
+    height: 10vh;
+    font-family: poppins;
+    font-size: 0.85vw;
+    margin-bottom: 1%;
+}
+
+.box__itens__container__info__bottom__duration__input{
+    width: 2.5vw;
+    height: 2vh;
+    font-family: poppins;
+    margin-top: 7%;
+    margin-right: 0.5vw;
+}
+
+.box__itens__container__info__bottom__genre__input{
+    width: 6vw;
+    height: 2vh;
+    font-family: poppins;
+    margin-top: 5%;
+    margin-right: 0.7vw;
+}
+
+.box__itens__container__info__bottom__saga__input{
+    height: 2.5vh;
+    font-family: poppins;
+    margin-top: 10%;
+    margin-right: 0.1vw;
+}
+
+.box__itens__container__info__bottom__date__input{
+    width: 7vw;
+    height: 2vh;  
+    font-family: poppins;  
+    margin-top: 5%;  
+}
+
+
+

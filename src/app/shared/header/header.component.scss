@@ -1,0 +1,52 @@
+
+@font-face {
+    font-family: poppins;
+    src: url("../../../assets/Poppins/Poppins-Medium.ttf");
+}
+
+.header{
+    width: 60vw;
+    height: 3vh;
+    background-color: rgb(10, 40, 61);
+    border-bottom: 3px solid rgb(1, 153, 255);
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+
+
+    &__list{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-family: poppins;
+        width: 30%;
+        height: 100%;
+        transition: all ease 0.2s;
+    
+        &__community, &__favorites, &__watched{   
+            transition: all ease 0.2s;
+        }
+    
+        &__community:hover, &__favorites:hover, &__watched:hover{
+            color: rgb(255, 209, 2);
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+
+        &__plus{
+            width: 7%;
+            height: 80%;
+            transition: all ease 0.2s;
+
+            &:hover{
+                cursor: pointer;
+                transform: scale(1.2);
+            }
+        }
+    }
+
+}
+
+
+

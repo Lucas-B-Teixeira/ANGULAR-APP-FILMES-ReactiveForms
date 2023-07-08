@@ -1,0 +1,28 @@
+app-header{
+    position: fixed;
+    z-index: 5;
+}
+
+@font-face {
+    font-family: poppinsbold;
+    src: url('../../../assets/Poppins/Poppins-Bold.ttf');
+}
+
+.box{
+    width: 60vw;
+    height: 80vh;
+    background-color: rgb(197, 192, 192);
+    display: flex;
+    justify-content: center;
+
+}
+
+h1{
+    font-family: poppins;
+    margin-top: 30%;
+}
+
+
+
+
+

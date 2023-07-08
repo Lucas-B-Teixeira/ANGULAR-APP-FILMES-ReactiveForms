@@ -1,0 +1,105 @@
+<div class="box">
+
+    <app-header></app-header>
+
+    <div class="box__itens">
+
+        <div *ngFor="let filme of watched; index as i" class="box__itens__container">
+            <div class="box__itens__container__photo">
+                <img class="box__itens__container__photo__img" src="{{ filme.urlImage }}" alt="">
+            </div>
+    
+            <div class="box__itens__container__info">
+    
+                <div class="box__itens__container__info__top">
+                    <div class="box__itens__container__info__top__title">
+                        <h1 class="box__itens__container__info__top__title__text">{{ filme.title }}</h1>
+                    </div>
+                
+                    <div class="box__itens__container__info__top__sinopse__text">
+                        <p>
+                            {{ filme.sinopse }}
+                        </p>
+                    </div>
+                </div>
+    
+                <div class="box__itens__container__info__bottom">
+
+                    <div class="box__itens__container__info__bottom__duration">
+                        <h3 class="box__itens__container__info__bottom__text">Duração: </h3>
+                        <p class="box__itens__container__info__bottom__value">{{ filme.duration }}</p>
+
+                    </div>
+            
+                    <div class="box__itens__container__info__bottom__genre">
+                        <h3 class="box__itens__container__info__bottom__text">Gênero: </h3>
+                        <p class="box__itens__container__info__bottom__value">{{ filme.genre }}</p>
+                    </div>
+            
+                    <div class="box__itens__container__info__bottom__classification">
+                        <img class="box__itens__container__info__bottom__classification__img" src="" alt="">
+                    </div>
+            
+                    <div class="box__itens__container__info__bottom__saga">
+                        <h3 class="box__itens__container__info__bottom__text">Saga: </h3>
+                        <p *ngIf="filme.saga == true" class="box__itens__container__info__bottom__value">Yes</p>
+                        <p *ngIf="filme.saga == false" class="box__itens__container__info__bottom__value">No</p>
+                    </div>
+            
+                    <div class="box__itens__container__info__bottom__date">
+                        <h3 class="box__itens__container__info__bottom__text">Data: </h3>
+                        <p class="box__itens__container__info__bottom__value">{{ filme.date }}</p>
+                    </div>
+                </div>
+            </div>
+                
+    
+            <div class="box__itens__container__buttons">
+    
+                <div class="box__itens__container__buttons__avaliation">
+                    <img *ngIf="filme.avaliationPersonal < 1" (click)="avaliation(filme, 1, i)" 
+                    class="box__itens__container__buttons__avaliation__pri" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationPersonal >= 1" (click)="avaliation(filme, 1, i)" 
+                    class="box__itens__container__buttons__avaliation__pri" src="../../../assets/star (2).png" alt="">
+
+                    <img *ngIf="filme.avaliationPersonal < 2" (click)="avaliation(filme, 2, i)" 
+                    class="box__itens__container__buttons__avaliation__seg" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationPersonal >= 2" (click)="avaliation(filme, 2, i)" 
+                    class="box__itens__container__buttons__avaliation__seg" src="../../../assets/star (2).png" alt="">
+
+                    <img *ngIf="filme.avaliationPersonal < 3" (click)="avaliation(filme, 3, i)" 
+                    class="box__itens__container__buttons__avaliation__ter" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationPersonal >= 3" (click)="avaliation(filme, 3, i)" 
+                    class="box__itens__container__buttons__avaliation__ter" src="../../../assets/star (2).png" alt="">
+
+                    <img *ngIf="filme.avaliationPersonal < 4" (click)="avaliation(filme, 4, i)" 
+                    class="box__itens__container__buttons__avaliation__qua" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationPersonal >= 4" (click)="avaliation(filme, 4, i)" 
+                    class="box__itens__container__buttons__avaliation__qua" src="../../../assets/star (2).png" alt="">
+
+                    <img *ngIf="filme.avaliationPersonal < 5" (click)="avaliation(filme, 5, i)" 
+                    class="box__itens__container__buttons__avaliation__qui" src="../../../assets/star (1).png" alt="">
+                    <img *ngIf="filme.avaliationPersonal >= 5" (click)="avaliation(filme, 5, i)" 
+                    class="box__itens__container__buttons__avaliation__qui" src="../../../assets/star (2).png" alt="">
+
+                </div>
+    
+                <div class="box__itens__container__buttons__actions">
+                    <img (click)="addFavortites(filme)" 
+                    *ngIf="filme.favorites == false" class="box__itens__container__buttons__actions__favorite" 
+                    src="../../../assets/favourite.png" alt="">
+
+                    <img (click)="addFavortites(filme)" 
+                    *ngIf="filme.favorites == true" class="box__itens__container__buttons__actions__favorite" 
+                    src="../../../assets/favourite (1).png" alt>
+
+                    <img (click)="del(filme, i)"
+                    class="box__itens__container__buttons__actions__delete" src="../../../assets/trash-bin.png" alt="">
+                </div>
+            </div>
+    
+        </div>
+
+    </div>
+
+</div>
